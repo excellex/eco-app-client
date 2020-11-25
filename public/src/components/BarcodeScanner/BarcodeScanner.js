@@ -4,7 +4,7 @@ import { Button, Col } from 'react-bootstrap';
 import { Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addBarcodeAC } from '../../redux/actionCreator';
-import { FaCameraRetro } from 'react-icons/fa';
+import { FaCamera } from 'react-icons/fa';
 
 
 const BarcodeScanner = () => {
@@ -30,7 +30,7 @@ const BarcodeScanner = () => {
             :
               <div>
                   <Button onClick={() => setScanned(!scanned)}>
-                      <FaCameraRetro />
+                      <FaCamera />
                   </Button>{' '}
               </div>
         }
