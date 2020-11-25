@@ -8,7 +8,11 @@ import { FaCamera } from 'react-icons/fa';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import classes from './BarcodeScanner.module.css';
 
+
 const BarcodeScanner = ({ scanned, setScanned }) => {
+
+  const [scanned, setScanned] = useState(false);
+
   const dispatch = useDispatch();
   return (
     <>

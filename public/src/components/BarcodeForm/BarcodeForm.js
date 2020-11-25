@@ -1,27 +1,42 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Alert, Form, Col } from 'react-bootstrap';
+
 import { useSelector } from 'react-redux';
 import { apiPost } from '../../utils/getFunctions';
 import { taresURL } from '../../utils/fetchURL';
 import classes from './BarcodeForm.module.css';
 
+
+
+
+import { getReceptionPoints } from '../../redux/actionCreator';
+
+
 const BarcodeForm = ({ scanned, setScanned }) => {
   const [isEmpty, setIsEmpty] = useState(true);
+  const disptatch = useDispatch();
   const barcode = useSelector(store => store.barcode);
   useEffect(() => {
+
     setIsEmpty(state => {
+
       return !state;
     });
     try {
       apiPost(taresURL, { barcode })
-        .then(data => console.log(data))
-        .catch(e => console.error(e.message()));
-    } catch (e) {}
+
+        .then(data => disptatch(getReceptionPoints(data)))
+        .catch(e => console.error(e.message)); // for not found
+    } catch (e) {
+
+    }
+
   }, [barcode]);
   const formValue = useRef();
   return (
     <>
       <Col sm="4">
+
         {isEmpty ? (
           <Form>
             <Form.Control
@@ -43,6 +58,17 @@ const BarcodeForm = ({ scanned, setScanned }) => {
             />
           </Form>
         )}
+          {/* {
+          isEmpty
+            ?
+            <Form>
+              <Form.Control type="text" defaultValue='Отсканируйте штрих-код' readOnly onChange={null} />
+            </Form>
+            :
+            <Form>
+              <Form.Control ref={formValue} type='number' value={barcode} readOnly onChange={null} />
+            </Form>
+        } */}
       </Col>
     </>
   );
