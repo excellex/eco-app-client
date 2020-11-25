@@ -10,10 +10,7 @@ import { store } from '../../redux/store';
 import Select from '../Select/Select';
 
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  fetchAddCategoryAC,
-  fetchAddMaterialAC,
-} from '../../redux/actionCreator';
+
 import classes from './Index.module.css';
 
 const Index = () => {
