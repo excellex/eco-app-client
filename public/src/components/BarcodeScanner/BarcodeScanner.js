@@ -2,15 +2,14 @@ import React, { useState, useEffect } from 'react';
 import BarcodeScannerComponent from 'react-webcam-barcode-scanner';
 import { Button } from 'react-bootstrap';
 import { Route } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { addBarcodeAC } from '../../redux/actionCreator';
 
 const BarcodeScanner = () => {
-  const [data, setData] = useState('Scan barcode');
   const [scanned, setScanned] = useState(true);
-  useEffect(() => {
-    if (data !== 'Scan barcode') {
-      setScanned(false);
-    }
-  }, [data]);
+  const dispatch = useDispatch();
+  const barcode = useSelector(store => store.barcode);
+  console.log(barcode);
   return (
 
     <>
@@ -25,7 +24,10 @@ const BarcodeScanner = () => {
               width={'90%'}
               height={'50%'}
               onUpdate={(err, result) => {
-                if (result) setData(result.text);
+                if (result) {
+                  setScanned(false)
+                  dispatch(addBarcodeAC(result.text));
+                }
               }}
             />
             :
