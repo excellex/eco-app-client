@@ -13,12 +13,7 @@ const BarcodeScanner = () => {
   return (
     <>
       <Col sm='4'>
-      <div>
-        <Button onClick={() => setScanned(!scanned)}>
-          <FaCameraRetro />
-        </Button>{' '}
-      </div>
-      <div>
+      <div onClick={() => setScanned(!scanned)}>
         {
           scanned
             ?
@@ -33,7 +28,11 @@ const BarcodeScanner = () => {
               }}
             />
             :
-            null
+              <div>
+                  <Button onClick={() => setScanned(!scanned)}>
+                      <FaCameraRetro />
+                  </Button>{' '}
+              </div>
         }
       </div>
       </Col>

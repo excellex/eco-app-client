@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Form, Col } from 'react-bootstrap';
+import {Alert, Form, Col } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { apiPost } from '../../utils/getFunctions';
 import { taresURL } from '../../utils/fetchURL';
@@ -23,12 +23,18 @@ const BarcodeForm = () => {
   return (
     <>
       <Col sm="4">
+
         {
           isEmpty
             ?
+            <div>
+            <Alert variant="success">
+              Наведите камеру на штрих-код
+            </Alert>
             <Form>
             <Form.Control type="text" defaultValue='Отсканируйте штрих-код' readOnly onChange={null} />
             </Form>
+            </div>
             :
             <Form>
             <Form.Control ref={formValue} type='number' value={barcode} readOnly onChange={null} />
