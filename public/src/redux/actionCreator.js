@@ -2,16 +2,16 @@ import {
   ADD_CATEGORY,
   ADD_MATERIAL,
   FIND_ADRESS,
-  ADD_COMPANY,
-} from "./actionTypes";
-import { categoriesURL, addPlaceURL, materialsURL } from "../utils/fetchURL";
+  ADD_COMPANY, ADD_BARCODE,
+} from './actionTypes';
+import { categoriesURL, addPlaceURL, materialsURL } from '../utils/fetchURL';
 
 export const featchFindAC = (parametr) => {
   return (dispatch) => {
     fetch(categoriesURL, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(parametr),
     })
@@ -23,9 +23,9 @@ export const featchFindAC = (parametr) => {
 export const featchAddCompanyAC = (parametr) => {
   return (dispatch) => {
     fetch(addPlaceURL, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(parametr),
     }).then((response) => response.json());
@@ -67,4 +67,9 @@ export const getCatListAC = (payload) => ({
 export const getMatListAC = (payload) => ({
   type: ADD_MATERIAL,
   payload,
+});
+
+export const addBarcodeAC = (payload) => ({
+  type: ADD_BARCODE,
+  payload
 });

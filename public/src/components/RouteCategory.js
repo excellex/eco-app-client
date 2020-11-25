@@ -1,22 +1,22 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom'
 import Blic from './Blic'
-import Tires from './Tires/Tires'
-import Clothing from './Clothing/Clothing'
-import Products from './Products/Products'
-import Plastic from './Plastic/Plastic'
+import Tires from './Tiles/Tires/Tires'
+import Clothing from './Tiles/Clothing/Clothing'
+import Products from './Tiles/Products/Products'
+import Plastic from './Tiles/Plastic/Plastic'
 import Tetrapac from './Tetrapac/Tetrapac'
-import Glass from './Glass/Glass'
-import Flakon from './Plastic/Flakon'
-import Plasticbottle from './Plastic/Plasticbottle'
-import Styrofoam from './Plastic/Styrofoam'
-import Metal from './Metal/Metal'
-import Paper from './Paper/Paper'
-import Lightbulbs from './Lightbulbs/Lightbulbs'
-import Batteries from './Batteries/Batteries'
-import Hazardouswaste from './Hazardouswaste/Hazardouswaste'
-import Glasscontainer from "./Glass/Glasscontainer";
-import Glassglassbreak from "./Glass/Glassglassbreak";
+import Glass from './Tiles/Glass/Glass'
+import Flakon from './Tiles/Plastic/Flakon'
+import Plasticbottle from './Tiles/Plastic/Plasticbottle'
+import Styrofoam from './Tiles/Plastic/Styrofoam'
+import Metal from './Tiles/Metal/Metal'
+import Paper from './Tiles/Paper/Paper'
+import Lightbulbs from './Tiles/Lightbulbs/Lightbulbs'
+import Batteries from './Tiles/Batteries/Batteries'
+import Hazardouswaste from './Tiles/Hazardouswaste/Hazardouswaste'
+import Glasscontainer from "./Tiles/Glass/Glasscontainer";
+import Glassglassbreak from "./Tiles/Glass/Glassglassbreak";
 
 function RouteCategory(props) {
   return (
