@@ -8,7 +8,7 @@ import { FaCamera } from 'react-icons/fa';
 
 
 const BarcodeScanner = () => {
-  const [scanned, setScanned] = useState(true);
+  const [scanned, setScanned] = useState(false);
   const dispatch = useDispatch();
   return (
     <>
