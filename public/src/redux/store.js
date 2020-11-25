@@ -1,4 +1,3 @@
-import { formatCountdown } from "antd/lib/statistic/utils";
 import {createStore} from 'redux';
 import {applyMiddleware} from 'redux';
 import ReduxThunk from 'redux-thunk'
