@@ -3,3 +3,4 @@ export const ADD_COMPANY = 'ADD_COMPANY';
 export const ADD_MATERIAL = 'ADD_MATERIAL';
 export const ADD_CATEGORY = 'ADD_CATEGORY';
 export const ADD_BARCODE = 'ADD_BARCODE';
+export const GET_RECEPTION_POINTS = 'GET_RECEPTION_POINTS'

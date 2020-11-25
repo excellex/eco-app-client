@@ -2,7 +2,7 @@ import {
   ADD_CATEGORY,
   ADD_MATERIAL,
   FIND_ADRESS,
-  ADD_COMPANY, ADD_BARCODE,
+  ADD_COMPANY, ADD_BARCODE, GET_RECEPTION_POINTS,
 } from './actionTypes';
 import { categoriesURL, addPlaceURL, materialsURL } from '../utils/fetchURL';
 
@@ -71,5 +71,10 @@ export const getMatListAC = (payload) => ({
 
 export const addBarcodeAC = (payload) => ({
   type: ADD_BARCODE,
+  payload,
+});
+
+export const getReceptionPoints = (payload) => ({
+  type: GET_RECEPTION_POINTS,
   payload
 });
