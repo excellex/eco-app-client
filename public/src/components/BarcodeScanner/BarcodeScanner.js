@@ -11,7 +11,7 @@ import classes from './BarcodeScanner.module.css';
 
 const BarcodeScanner = ({ scanned, setScanned }) => {
 
-  const [scanned, setScanned] = useState(false);
+
 
   const dispatch = useDispatch();
   return (
