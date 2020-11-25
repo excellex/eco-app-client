@@ -26,14 +26,14 @@ function App() {
       <Switch>
         <Route exact path='/'>
           <IndexPage />
-          <AddButton data={data} />
+
           <BlicStart />
-          <Form data={data} />
-          <RouteCategory />
         </Route>
         <Route exact path='/signin' component={SignInPage} />
         <Route exact path='/signup' component={SignUpPage} />
         <Route exact path='/dashboard' component={Dashboard} />
+        <Route path="/">
+        </Route>
       </Switch>
     </div>
   );

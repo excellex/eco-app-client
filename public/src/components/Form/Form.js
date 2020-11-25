@@ -5,8 +5,10 @@ import style from "./Form.module.css";
 import styles from "../FindAdress.module.css";
 import Select from "../Select/Select";
 import { apiGet } from "../../utils/getFunctions";
+import { useSelector } from 'react-redux';
 
-export default function Form({ data }) {
+export default function Form() {
+  const data = useSelector(store => store.barcode)
   const [errorState, setErrorState] = useState(false);
   const [success, setSuccess] = useState(true);
   const [places, setPlaces] = useState([]);
