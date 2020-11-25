@@ -16,7 +16,7 @@ const BarcodeForm = () => {
     try {
       apiPost(taresURL, { barcode })
         .then(data => disptatch(getReceptionPoints(data)))
-        .catch(e => console.error(e.message())); // for not found
+        .catch(e => console.error(e.message)); // for not found
     } catch (e) {
 
     }
