@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Alert, Form, Col } from 'react-bootstrap';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { apiPost } from '../../utils/getFunctions';
 import { taresURL } from '../../utils/fetchURL';
 import classes from './BarcodeForm.module.css';
