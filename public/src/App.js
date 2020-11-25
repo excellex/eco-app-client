@@ -1,40 +1,25 @@
 import React from 'react';
-import './App.css';
-import BarcodeScannerComponent from 'react-webcam-barcode-scanner';
-import Form from './components/Form/Form';
 import { Route, Switch } from 'react-router-dom';
-import BlicStart from '../src/components/BlicStart';
-import RouteCategory from './components/RouteCategory';
-import AddButton from './components/AddButton';
-import { fetchAddCategoryAC, fetchAddMaterialAC } from './redux/actionCreator';
-import { useDispatch, useSelector } from 'react-redux';
-import SignInPage from './pages/SignInPage/SignInPage';
 import IndexPage from './pages/IndexPage/IndexPage';
 import SignUpPage from './pages/SignUpPage/SignUpPage';
 import Dashboard from './pages/Dashboard/Dashboard';
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
+import SignInPage from './pages/SignInPage/SignInPage';
+import './App.css';
+
 
 function App() {
-  const [data, setData] = React.useState('Scan barcode');
-  const dispatch = useDispatch();
-  try {
-    dispatch(fetchAddCategoryAC());
-    dispatch(fetchAddMaterialAC());
-  } catch (e) {
-  }
   return (
     <div className="App">
+      <Header />
       <Switch>
-        <Route exact path='/'>
-          <IndexPage />
-
-          <BlicStart />
-        </Route>
+        <Route exact path='/' component={IndexPage} />
         <Route exact path='/signin' component={SignInPage} />
         <Route exact path='/signup' component={SignUpPage} />
         <Route exact path='/dashboard' component={Dashboard} />
-        <Route path="/">
-        </Route>
       </Switch>
+      <Footer />
     </div>
   );
 }
