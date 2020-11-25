@@ -8,6 +8,8 @@ import RouteCategory from "./components/RouteCategory";
 import AddButton from "./components/AddButton";
 import { fetchAddCategoryAC, fetchAddMaterialAC } from "./redux/actionCreator";
 import { useDispatch, useSelector } from "react-redux";
+import SignInPage from './pages/SignInPage/SignInPage';
+import IndexPage from './pages/IndexPage/IndexPage';
 
 function App() {
   const [data, setData] = React.useState("Scan barcode");
@@ -19,16 +21,12 @@ function App() {
   return (
     <div className="App">
       <Switch>
-        <Route exact path="/">
+        <Route exact path='/' component={IndexPage}/>
+        <Route exact path='/signin' component={SignInPage} />
+        <Route/>
+        <Route/>
+        <Route exact path='/'>
           <AddButton data={data} />
-
-          <BarcodeScannerComponent
-            width={"90%"}
-            height={"50%"}
-            onUpdate={(err, result) => {
-              if (result) setData(result.text);
-            }}
-          />
           <BlicStart />
           <Form data={data} />
         </Route>
