@@ -1,0 +1,33 @@
+{
+  "name": "eco-app-client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "heroku-postbuild": "cd public && npm install && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/excellex/eco-app-client.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mongoose": "^5.10.15",
+    "morgan": "^1.10.0",
+    "path": "^0.12.7",
+    "session-file-store": "^1.5.0"
+  },
+  "bugs": {
+    "url": "https://github.com/excellex/eco-app-client/issues"
+  },
+  "homepage": "https://github.com/excellex/eco-app-client#readme"
+}
