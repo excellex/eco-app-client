@@ -1,10 +1,11 @@
 import React from 'react';
+import { Navbar, NavbarBrand } from 'react-bootstrap';
 
 const Footer = () => {
   return (
-    <div>
-      Footer
-    </div>
+    <Navbar fixed="bottom" expand="md" variant="dark" bg="success">
+      <NavbarBrand>MASK</NavbarBrand>
+    </Navbar>
   );
 };
 
