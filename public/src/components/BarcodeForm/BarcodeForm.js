@@ -27,14 +27,9 @@ const BarcodeForm = () => {
         {
           isEmpty
             ?
-            <div>
-            <Alert variant="success">
-              Наведите камеру на штрих-код
-            </Alert>
             <Form>
             <Form.Control type="text" defaultValue='Отсканируйте штрих-код' readOnly onChange={null} />
             </Form>
-            </div>
             :
             <Form>
             <Form.Control ref={formValue} type='number' value={barcode} readOnly onChange={null} />
