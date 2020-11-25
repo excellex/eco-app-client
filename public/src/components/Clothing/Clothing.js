@@ -1,16 +1,16 @@
-import React from 'react';
-import style from '../Text.module.css'
-import FindAdress from '../FindAdress';
+import React from "react";
+import style from "../Text.module.css";
+import FindAdress from "../FindAdress";
 
 function Clothing() {
-  const props = { category: 'КАТЕГОРИЯ', material: 'ОДЕЖДА' };
+  const props = { category: "КАТЕГОРИЯ", material: "clothing" };
 
   return (
     <div>
       <FindAdress props={props} />
       <br />
       <div className={style.text}>
-        <p4>Спасибо!</p4>
+        <p>Спасибо!</p>
       </div>
     </div>
   );

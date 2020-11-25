@@ -1,7 +1,7 @@
-import React from 'react';
-import CompanyRegistration from './CompanyRegistration/CompanyRegistration';
+import React from "react";
+import CompanyRegistration from "./CompanyRegistration/CompanyRegistration";
 
-function AddButton(props) {
+function AddButton({ data }) {
   return (
     <div>
       <button
@@ -12,7 +12,6 @@ function AddButton(props) {
       >
         Добавить пункт приема
       </button>
-
 
       <div
         className="modal fade"
@@ -38,7 +37,7 @@ function AddButton(props) {
               </button>
             </div>
             <div className="modal-body">
-              <CompanyRegistration />
+              <CompanyRegistration data={data} />
             </div>
           </div>
         </div>

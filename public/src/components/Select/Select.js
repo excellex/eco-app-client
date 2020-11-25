@@ -1,23 +1,11 @@
 import React, { useEffect, useState } from "react";
 import style from "./Select.module.css";
-import { categoriesURL } from "../../utils/fetchURL";
 import { materialsURL, addTareURL } from "../../utils/fetchURL";
-import { apiGet } from "../../utils/getFunctions";
 
-export default function Select({ data }) {
+export default function Select({ data, materials, categories }) {
   const [selectedMaterial, setSelectedMaterial] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [errorState, setErrorState] = useState(false);
-  const [categories, setCategories] = useState([]);
-  const [materials, setMaterials] = useState([]);
-
-  useEffect(() => {
-    apiGet(materialsURL).then((data) => setMaterials(data));
-  }, []);
-
-  useEffect(() => {
-    apiGet(categoriesURL).then((data) => setCategories(data));
-  }, []);
 
   const selectedMaterialHandler = (event) => {
     setSelectedMaterial(event.target.value);

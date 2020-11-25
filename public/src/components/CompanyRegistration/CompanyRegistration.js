@@ -1,9 +1,13 @@
 import React, { useRef, useEffect, useState } from "react";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
+import { v4 as uuidv4 } from "uuid";
+import {
+  featchAddCompanyAC,
+  fetchAddCategoryAC,
+  fetchAddMaterialAC,
+} from "../../redux/actionCreator";
 
-import { featchAddCompanyAC } from '../../redux/actionCreator';
-
-export default function CompanyRegistration() {
+export default function CompanyRegistration({ data }) {
   const dispatch = useDispatch();
   const long = useRef();
   const lat = useRef();
@@ -13,10 +17,11 @@ export default function CompanyRegistration() {
   const material = useRef();
   const categories = useRef();
   const [errorState, setErrorState] = useState(false);
+  const storeMaterials = useSelector((store) => store.materials);
+  const storeCategories = useSelector((store) => store.categories);
 
   const inputHelper = (event) => {
     event.preventDefault();
-
 
     const obj = {
       geometry: [lat.current.value, long.current.value],
@@ -31,8 +36,7 @@ export default function CompanyRegistration() {
     };
 
     try {
-      dispatch(featchAddCompanyAC(obj))
-        .catch((e) => setErrorState(true));
+      dispatch(featchAddCompanyAC(obj)).catch((e) => setErrorState(true));
     } catch (e) {
       setErrorState(true);
     }
@@ -42,37 +46,54 @@ export default function CompanyRegistration() {
     <div>
       <form onSubmit={inputHelper}>
         <label>Введите широту и долготу</label> <br />
-        <input ref={lat} name="lat"  type="text" placeholder="широта" />{" "}
-        <input ref={long} name="long" type="text" placeholder="долгота" /> <br />
+        <input ref={lat} name="lat" type="text" placeholder="широта" />{" "}
+        <input ref={long} name="long" type="text" placeholder="долгота" />{" "}
+        <br />
         <label>Название и территориальное расположение(метро)</label> <br />
         <input ref={metro} name="metro" type="text" /> <br />
         <label>Адрес</label> <br />
-        <input ref={address} name="address" type="text" placeholder="адрес" /> <br />
+        <input
+          ref={address}
+          name="address"
+          type="text"
+          placeholder="адрес"
+        />{" "}
+        <br />
         <label>Ссылка</label> <br />
         <input ref={link} name="link" type="text" placeholder="ссылка" /> <br />
         <label>Выберите материал: </label> <br />
-        <select ref={material} name="material" id="material" defaultValue={"DEFAULT"}>
+        <select
+          ref={material}
+          name="material"
+          id="material"
+          defaultValue={"DEFAULT"}
+        >
           <option value="DEFAULT" disabled>
             -- Материал --
           </option>
-          <option value="СТЕКЛО">Стекло</option>
-          <option value="МЕТАЛЛ">Металл</option>
-          <option value="ПЛАСТИК">Пластик</option>
-          <option value="БУМАГА">Бумага</option>
-          <option value="РЕЗИНА">Резина</option>
+          {storeMaterials &&
+            storeMaterials.map((material) => (
+              <option key={uuidv4()} value={material.name}>
+                {material.name}
+              </option>
+            ))}
         </select>
-
-        <select ref={categories} name="categories" id="category" defaultValue={"DEFAULT"} >
+        <select
+          ref={categories}
+          name="categories"
+          id="category"
+          defaultValue={"DEFAULT"}
+        >
           <option value="DEFAULT" disabled>
             -- Категории --
           </option>
-          <option value="БУТЫЛКИ">Бутылка</option>
-          <option value="БАНКИ">Банка</option>
-          <option value="КОРОБКИ/КОНТЕЙНЕРЫ">Коробка/Упаковка</option>
-          <option value="КАНИСТРЫ">Канистра</option>
-          <option value="БОЧКИ">Бочка</option>
+          {storeCategories &&
+            storeCategories.map((category) => (
+              <option key={uuidv4()} value={category.name}>
+                {category.name}
+              </option>
+            ))}
         </select>
-
         <div className="modal-footer">
           <button
             type="button"

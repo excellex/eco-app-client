@@ -1,14 +1,26 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Map, Placemark, YMaps, ZoomControl } from "react-yandex-maps";
-import Select from "../Select/Select";
-import { taresURL } from "../../utils/fetchURL";
+import { categoriesURL, materialsURL, taresURL } from "../../utils/fetchURL";
 import style from "./Form.module.css";
 import styles from "../FindAdress.module.css";
+import Select from "../Select/Select";
+import { apiGet } from "../../utils/getFunctions";
 
 export default function Form({ data }) {
   const [errorState, setErrorState] = useState(false);
   const [success, setSuccess] = useState(true);
   const [places, setPlaces] = useState([]);
+
+  const [categories, setCategories] = useState([]);
+  const [materials, setMaterials] = useState([]);
+
+  useEffect(() => {
+    apiGet(materialsURL).then((data) => setMaterials(data));
+  }, []);
+
+  useEffect(() => {
+    apiGet(categoriesURL).then((data) => setCategories(data));
+  }, []);
 
   const mapstate = {
     center: [59.9371, 30.3575],
@@ -21,7 +33,6 @@ export default function Form({ data }) {
   const clickHandler = () => {
     if ("Scan barcode" !== barcodeInput.current.value) {
       try {
-
         fetch(taresURL, {
           method: "POST",
           headers: {
@@ -51,7 +62,6 @@ export default function Form({ data }) {
           ref={barcodeInput}
           type="text"
           readOnly
-
         />
         <button
           type="button"
@@ -60,10 +70,11 @@ export default function Form({ data }) {
         >
           Отправить
         </button>
-
       </div>
       {/*{!success ? <FindAdress places={places}/> : null}*/}
-      {!success ? <Select data={data} /> : null}
+      {!success ? (
+        <Select materials={materials} categories={categories} data={data} />
+      ) : null}
       <div className={styles.flexfind}>
         <YMaps>
           <Map state={mapstate}>

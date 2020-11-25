@@ -1,7 +1,10 @@
-
-import { FIND_ADRESS } from "./actionTypes";
-import { ADD_COMPANY } from "./actionTypes";
-import { categoriesURL, addPlaceURL } from "../utils/fetchURL";
+import {
+  ADD_CATEGORY,
+  ADD_MATERIAL,
+  FIND_ADRESS,
+  ADD_COMPANY,
+} from "./actionTypes";
+import { categoriesURL, addPlaceURL, materialsURL } from "../utils/fetchURL";
 
 export const featchFindAC = (parametr) => {
   return (dispatch) => {
@@ -17,7 +20,6 @@ export const featchFindAC = (parametr) => {
   };
 };
 
-
 export const featchAddCompanyAC = (parametr) => {
   return (dispatch) => {
     fetch(addPlaceURL, {
@@ -26,19 +28,43 @@ export const featchAddCompanyAC = (parametr) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(parametr),
-    })
-      .then((response) => response.json())
-      // .then((data) => console.log(data))
-  }
-}
+    }).then((response) => response.json());
+    // .then((data) => console.log(data))
+  };
+};
 
-export const findAdressAC = (payload) => ({
-  type: FIND_ADRESS,
-  payload
-})
+export const fetchAddCategoryAC = (param) => {
+  return (dispatch) => {
+    fetch(categoriesURL)
+      .then((response) => response.json())
+      .then((data) => dispatch(getCatListAC(data)));
+  };
+};
+
+export const fetchAddMaterialAC = () => {
+  return (dispatch) => {
+    fetch(materialsURL)
+      .then((response) => response.json())
+      .then((data) => dispatch(getMatListAC(data)));
+  };
+};
 
 export const addCompanyAC = (payload) => ({
   type: ADD_COMPANY,
-  payload
-})
+  payload,
+});
 
+export const findAdressAC = (payload) => ({
+  type: FIND_ADRESS,
+  payload,
+});
+
+export const getCatListAC = (payload) => ({
+  type: ADD_CATEGORY,
+  payload,
+});
+
+export const getMatListAC = (payload) => ({
+  type: ADD_MATERIAL,
+  payload,
+});
