@@ -1,5 +1,5 @@
 import React from 'react';
-import FindAdress from '../FindAdress';
+import FindAdress from '../../FindAdress';
 
 function Tetrapak() {
   const props = { category: 'КАТЕГОРИЯ', material: 'ТЕТРА-ПАК' };

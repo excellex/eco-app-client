@@ -1,7 +1,7 @@
 import React from 'react';
-import style from '../Text.module.css'
+import style from '../../Text.module.css'
 
-import FindAdress from '../FindAdress';
+import FindAdress from '../../FindAdress';
 
 function Glasscontainer() {
 const props = {category:'КАТЕГОРИЯ', material:'СТЕКЛО'};

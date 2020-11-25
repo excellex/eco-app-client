@@ -1,6 +1,6 @@
 import React from "react";
-import FindAdress from "../FindAdress";
-import style from "../Text.module.css";
+import FindAdress from "../../FindAdress";
+import style from "../../Text.module.css";
 
 function Tires() {
   const props = { category: "ШИНЫ", material: "РЕЗИНА" };

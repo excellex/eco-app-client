@@ -1,6 +1,6 @@
 import React from "react";
-import style from "../Text.module.css";
-import FindAdress from "../FindAdress";
+import style from "../../Text.module.css";
+import FindAdress from "../../FindAdress";
 
 function Hazardouswaste() {
   const props = { category: "КАТЕГОРИЯ", material: "hazardouswaste" };

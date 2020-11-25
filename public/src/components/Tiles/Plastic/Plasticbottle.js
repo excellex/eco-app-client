@@ -1,10 +1,9 @@
 import React from "react";
-import FindAdress from "../FindAdress";
-import style from "../Text.module.css";
+import FindAdress from "../../FindAdress";
+import style from "../../Text.module.css";
 
-function Flakon() {
-  const props = { category: "КАТЕГОРИЯ", material: "ПЛАСТИК" };
-
+function Plasticbottle() {
+  const props = { category: "БУТЫЛКИ", material: "ПЛАСТИК" };
   return (
     <div>
       <FindAdress props={props} />
@@ -41,4 +40,4 @@ function Flakon() {
   );
 }
 
-export default Flakon;
+export default Plasticbottle;
