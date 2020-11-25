@@ -6,7 +6,7 @@ import { Map, Placemark, YMaps, ZoomControl } from 'react-yandex-maps';
 
 const ReceptionPointsMap = () => {
   const receptionPointsPlaces = useSelector(store => store.receptionPoints.places);
-  console.log(receptionPointsPlaces);
+  const receptionPointsDescription= useSelector(store => store.receptionPoints.description)
   const mapstate = {
     center: [59.9371, 30.3575],
     zoom: 9,
@@ -28,6 +28,7 @@ const ReceptionPointsMap = () => {
           </Map>
         </YMaps>
       </div>
+      <p>{receptionPointsDescription}</p>
     </div>
   );
 };
