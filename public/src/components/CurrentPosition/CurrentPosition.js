@@ -4,16 +4,14 @@ import { addCurrentPositionAC } from '../../redux/actionCreator';
 
 const CurrentPosition = () => {
   const dispatch = useDispatch();
-  useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.watchPosition((position) => {
-        dispatch(addCurrentPositionAC({
-          latitude: (position.coords.latitude).toString().slice(0,9),
-          longitude: (position.coords.longitude).toString().slice(0,9),
-        }));
-      });
-    }
-  }, []);
+  if (navigator.geolocation) {
+    navigator.geolocation.watchPosition((position) => {
+      dispatch(addCurrentPositionAC({
+        latitude: (position.coords.latitude).toString().slice(0,9),
+        longitude: (position.coords.longitude).toString().slice(0,9),
+      }));
+    });
+  }
   return (
     <>
     </>
