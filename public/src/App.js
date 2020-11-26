@@ -12,7 +12,7 @@ import { Container } from 'react-bootstrap';
 
 function App() {
   return (
-      <div>
+      <div style={{position: 'relative'}} >
         <Header />
         <Switch>
           <Route exact path='/' component={IndexPage} />
