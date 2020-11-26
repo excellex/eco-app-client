@@ -4,3 +4,8 @@
     flex-wrap: wrap;
     padding-bottom: 50px;
 }
+
+.paragraph {
+    text-align: justify;
+    padding: 30px;
+}

@@ -31,7 +31,7 @@ const ReceptionPointsMap = () => {
           </Map>
         </YMaps>
       </div>
-      <p>{receptionPointsDescription}</p>
+      <p className={classes.paragraph}>{receptionPointsDescription}</p>
     </div>
       </>
   );
