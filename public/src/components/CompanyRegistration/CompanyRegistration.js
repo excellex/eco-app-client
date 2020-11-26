@@ -21,7 +21,6 @@ export default function CompanyRegistration({ data }) {
   const material = useRef();
   const categories = useRef();
 
-
   const inputHelper = (event) => {
     event.preventDefault();
 
