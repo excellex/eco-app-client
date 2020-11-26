@@ -12,6 +12,8 @@ import Select from '../Select/Select';
 import { useDispatch, useSelector } from 'react-redux';
 
 import classes from './Index.module.css';
+import CompanyRegistration from '../CompanyRegistration/CompanyRegistration';
+import CurrentPosition from '../CurrentPosition/CurrentPosition';
 
 const Index = () => {
   const [data, setData] = React.useState('Scan barcode');
@@ -26,7 +28,6 @@ const Index = () => {
   } catch (e) {}
   return (
     <div>
-
       <div className={scanned ? null : classes.false}>
         <BarcodeForm scanned={scanned} setScanned={setScanned} />
         <BarcodeScanner scanned={scanned} setScanned={setScanned} />
@@ -34,9 +35,8 @@ const Index = () => {
 
       {success ? <ReceptionPointsMap /> : null}
       {!success && barcode ? <Select /> : null}
-
-      {/*<AddButton/>*/}
-      <BlicStart />
+      {/*<BlicStart />*/}
+      <CurrentPosition />
     </div>
   );
 };

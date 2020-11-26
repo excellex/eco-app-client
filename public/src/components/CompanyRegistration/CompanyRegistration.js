@@ -1,13 +1,17 @@
-import React, { useRef, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { v4 as uuidv4 } from "uuid";
+import React, { useRef, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 import {
   featchAddCompanyAC,
   fetchAddCategoryAC,
   fetchAddMaterialAC,
-} from "../../redux/actionCreator";
+} from '../../redux/actionCreator';
 
 export default function CompanyRegistration({ data }) {
+  const [errorState, setErrorState] = useState(false);
+  const storeMaterials = useSelector((store) => store.materials);
+  const storeCategories = useSelector((store) => store.categories);
+  const currentPosition = useSelector(store => store.currentPosition);
   const dispatch = useDispatch();
   const long = useRef();
   const lat = useRef();
@@ -16,9 +20,7 @@ export default function CompanyRegistration({ data }) {
   const link = useRef();
   const material = useRef();
   const categories = useRef();
-  const [errorState, setErrorState] = useState(false);
-  const storeMaterials = useSelector((store) => store.materials);
-  const storeCategories = useSelector((store) => store.categories);
+
 
   const inputHelper = (event) => {
     event.preventDefault();
@@ -29,7 +31,7 @@ export default function CompanyRegistration({ data }) {
         hintContent: metro.current.value,
         balloonContent: address.current.value,
       },
-      modules: ["geoObject.addon.hint", "geoObject.addon.balloon"],
+      modules: ['geoObject.addon.hint', 'geoObject.addon.balloon'],
       link: link.current.value,
       materials: [material.current.value],
       categories: [categories.current.value],
@@ -41,13 +43,12 @@ export default function CompanyRegistration({ data }) {
       setErrorState(true);
     }
   };
-
   return (
     <div>
       <form onSubmit={inputHelper}>
         <label>Введите широту и долготу</label> <br />
-        <input ref={lat} name="lat" type="text" placeholder="широта" />{" "}
-        <input ref={long} name="long" type="text" placeholder="долгота" />{" "}
+        <input ref={lat} name="lat" type="text" placeholder="широта" defaultValue={currentPosition.latitude} />{' '}
+        <input ref={long} name="long" type="text" placeholder="долгота" defaultValue={currentPosition.longitude} />{' '}
         <br />
         <label>Название и территориальное расположение(метро)</label> <br />
         <input ref={metro} name="metro" type="text" /> <br />
@@ -57,7 +58,7 @@ export default function CompanyRegistration({ data }) {
           name="address"
           type="text"
           placeholder="адрес"
-        />{" "}
+        />{' '}
         <br />
         <label>Ссылка</label> <br />
         <input ref={link} name="link" type="text" placeholder="ссылка" /> <br />
@@ -66,33 +67,33 @@ export default function CompanyRegistration({ data }) {
           ref={material}
           name="material"
           id="material"
-          defaultValue={"DEFAULT"}
+          defaultValue={'DEFAULT'}
         >
           <option value="DEFAULT" disabled>
             -- Материал --
           </option>
           {storeMaterials &&
-            storeMaterials.map((material) => (
-              <option key={uuidv4()} value={material.name}>
-                {material.name}
-              </option>
-            ))}
+          storeMaterials.map((material) => (
+            <option key={uuidv4()} value={material.name}>
+              {material.name}
+            </option>
+          ))}
         </select>
         <select
           ref={categories}
           name="categories"
           id="category"
-          defaultValue={"DEFAULT"}
+          defaultValue={'DEFAULT'}
         >
           <option value="DEFAULT" disabled>
             -- Категории --
           </option>
           {storeCategories &&
-            storeCategories.map((category) => (
-              <option key={uuidv4()} value={category.name}>
-                {category.name}
-              </option>
-            ))}
+          storeCategories.map((category) => (
+            <option key={uuidv4()} value={category.name}>
+              {category.name}
+            </option>
+          ))}
         </select>
         <div className="modal-footer">
           <button

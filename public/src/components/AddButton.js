@@ -6,7 +6,7 @@ function AddButton({ data }) {
     <div>
       <button
         type="button"
-        className="btn btn-primary plus-btn"
+        className="btn btn-success plus-btn"
         data-toggle="modal"
         data-target="#exampleModalCenter"
       >
