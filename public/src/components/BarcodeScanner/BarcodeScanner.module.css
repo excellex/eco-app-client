@@ -1,5 +1,16 @@
 .false {
     margin-top: 1rem;
     position: absolute;
-    right: 20%;
+    right: 15px;
+}
+
+.barcodeWrapper {
+    display: flex;
+    justify-content: center;
+}
+
+@media screen and (max-width: 600px) {
+    .barcodeWrapper video {
+        width: 90%;
+    }
 }

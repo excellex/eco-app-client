@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navbar, NavbarBrand } from 'react-bootstrap';
 import AddButton from '../AddButton';
+import classes from './Footer.module.css'
 
 const Footer = () => {
   return (
@@ -8,9 +9,9 @@ const Footer = () => {
     {/*<Navbar fixed="bottom" expand="md" variant="dark" bg="success">*/}
 
     {/*</Navbar>*/}
-  <div className="navbar-fixed-bottom row-fluid">
+  <div className={classes.footer}>
     <div className="navbar-inner">
-      <div className="container">
+      <div className="container text-center">
         MASK
         <AddButton/>
       </div>

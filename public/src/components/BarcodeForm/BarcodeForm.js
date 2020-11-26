@@ -7,8 +7,6 @@ import { taresURL } from '../../utils/fetchURL';
 import classes from './BarcodeForm.module.css';
 
 
-
-
 import { getReceptionPoints } from '../../redux/actionCreator';
 
 
@@ -35,13 +33,12 @@ const BarcodeForm = ({ scanned, setScanned }) => {
   const formValue = useRef();
   return (
     <>
-      <Col sm="4">
+      <Col md="12">
 
         {isEmpty ? (
           <Form>
             <Form.Control
               type="text"
-              defaultValue="Отсканируйте штрих-код"
               readOnly
               onChange={null}
             />
@@ -58,7 +55,7 @@ const BarcodeForm = ({ scanned, setScanned }) => {
             />
           </Form>
         )}
-          {/* {
+        {/* {
           isEmpty
             ?
             <Form>

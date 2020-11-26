@@ -13,11 +13,11 @@ const BarcodeScanner = ({ scanned, setScanned }) => {
   const dispatch = useDispatch();
   return (
     <>
-      <Col sm="4">
         <div onClick={() => setScanned(!scanned)}>
           {scanned ? (
+            <div className={classes.barcodeWrapper}>
             <BarcodeScannerComponent
-              width={'100%'}
+              width={'30%'}
               height={'50%'}
               onUpdate={(err, result) => {
                 if (result) {
@@ -27,6 +27,7 @@ const BarcodeScanner = ({ scanned, setScanned }) => {
                 }
               }}
             />
+            </div>
           ) : (
             <div>
               <Button
@@ -39,7 +40,6 @@ const BarcodeScanner = ({ scanned, setScanned }) => {
             </div>
           )}
         </div>
-      </Col>
     </>
   );
 };

@@ -3,19 +3,22 @@ import { useSelector } from 'react-redux';
 import { store } from '../../redux/store';
 import style from '../FindAdress.module.css';
 import { Map, Placemark, YMaps, ZoomControl } from 'react-yandex-maps';
-
+import classes from './ReceptionPointsMap.module.css'
 const ReceptionPointsMap = () => {
   const receptionPointsPlaces = useSelector(store => store.receptionPoints.places);
-  const receptionPointsDescription= useSelector(store => store.receptionPoints.description)
+  const receptionPointsDescription = useSelector(store => store.receptionPoints.description);
+  const center = useSelector(store => [store.currentPosition.latitude, store.currentPosition.longitude]);
+  console.log(center);
   const mapstate = {
-    center: [59.9371, 30.3575],
-    zoom: 9,
-    width: "90%",
-    height: "90%",
+    center,
+    zoom: 12,
+    width: '100%',
+    height: '100%',
   };
   return (
-    <div>
-      Пункты приема.
+    <>
+    <br/>
+  <div className={classes.mapWrapper}>
       <br />
       <div>
         <YMaps>
@@ -30,6 +33,7 @@ const ReceptionPointsMap = () => {
       </div>
       <p>{receptionPointsDescription}</p>
     </div>
+      </>
   );
 };
 
