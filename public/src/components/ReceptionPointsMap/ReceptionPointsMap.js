@@ -8,7 +8,6 @@ const ReceptionPointsMap = () => {
   const receptionPointsPlaces = useSelector(store => store.receptionPoints.places);
   const receptionPointsDescription = useSelector(store => store.receptionPoints.description);
   const center = useSelector(store => [store.currentPosition.latitude, store.currentPosition.longitude]);
-  console.log(center);
   const mapstate = {
     center,
     zoom: 12,
@@ -17,23 +16,23 @@ const ReceptionPointsMap = () => {
   };
   return (
     <>
-    <br/>
-  <div className={classes.mapWrapper}>
       <br />
-      <div>
-        <YMaps>
-          <Map state={mapstate}>
-            {receptionPointsPlaces &&
-            receptionPointsPlaces.map(placemark => (
-              <Placemark key={placemark._id} {...placemark} />
-            ))}
-            <ZoomControl />
-          </Map>
-        </YMaps>
+      <div className={classes.mapWrapper}>
+        <br />
+        <div>
+          <YMaps>
+            <Map state={mapstate}>
+              {receptionPointsPlaces &&
+                receptionPointsPlaces.map(placemark => (
+                  <Placemark key={placemark._id} {...placemark} />
+                ))}
+              <ZoomControl />
+            </Map>
+          </YMaps>
+        </div>
       </div>
-      <p>{receptionPointsDescription}</p>
-    </div>
-      </>
+        <div className={classes.info}> {receptionPointsDescription}</div>
+    </>
   );
 };
 
