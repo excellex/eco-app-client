@@ -5,37 +5,41 @@ import { Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addBarcodeAC } from '../../redux/actionCreator';
 import { FaCamera } from 'react-icons/fa';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import classes from './BarcodeScanner.module.css';
 
 
-const BarcodeScanner = () => {
-  const [scanned, setScanned] = useState(true);
+const BarcodeScanner = ({ scanned, setScanned }) => {
   const dispatch = useDispatch();
   return (
     <>
-      <Col sm='4'>
-      <div onClick={() => setScanned(!scanned)}>
-        {
-          scanned
-            ?
+        <div onClick={() => setScanned(!scanned)}>
+          {scanned ? (
+            <div className={classes.barcodeWrapper}>
             <BarcodeScannerComponent
-              width={'100%'}
+              width={'30%'}
               height={'50%'}
               onUpdate={(err, result) => {
                 if (result) {
-                  setScanned(false)
+                  setScanned(false);
+                  console.log(result.text);
                   dispatch(addBarcodeAC(result.text));
                 }
               }}
             />
-            :
-              <div>
-                  <Button onClick={() => setScanned(!scanned)}>
-                      <FaCamera />
-                  </Button>{' '}
-              </div>
-        }
-      </div>
-      </Col>
+            </div>
+          ) : (
+            <div>
+              <Button
+                variant="success"
+                onClick={() => setScanned(!scanned)}
+                className={scanned ? null : classes.false}
+              >
+                <FaCamera />
+              </Button>{' '}
+            </div>
+          )}
+        </div>
     </>
   );
 };

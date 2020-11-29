@@ -1,0 +1,16 @@
+.footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin: auto;
+}
+.footer .container {
+    text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+    .footer{
+        position: relative;
+        margin-top: 25px;
+    }
+}

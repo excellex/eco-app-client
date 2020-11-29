@@ -1,10 +1,16 @@
-import React, { useEffect, useState } from "react";
-import style from "./Select.module.css";
-import { materialsURL, addTareURL } from "../../utils/fetchURL";
+import React, { useEffect, useState } from 'react';
+import style from './Select.module.css';
+import { materialsURL, addTareURL } from '../../utils/fetchURL';
+import { apiPost } from '../../utils/getFunctions';
+import { useSelector } from 'react-redux';
+import { store } from '../../redux/store';
 
-export default function Select({ data, materials, categories }) {
-  const [selectedMaterial, setSelectedMaterial] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("");
+export default function Select() {
+  const data = useSelector(store => store.barcode);
+  const materials = useSelector(store => store.materials);
+  const categories = useSelector(store => store.categories);
+  const [selectedMaterial, setSelectedMaterial] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('');
   const [errorState, setErrorState] = useState(false);
 
   const selectedMaterialHandler = (event) => {
@@ -17,20 +23,14 @@ export default function Select({ data, materials, categories }) {
 
   const clickHandler = () => {
     if (selectedMaterial && selectedCategory) {
-      const obj = {
+      const body = {
         barcode: data,
         material: selectedMaterial,
         category: selectedCategory,
       };
 
       try {
-        fetch(addTareURL, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(obj),
-        });
+        apiPost(addTareURL, body).catch(e => e);
       } catch (e) {
         setErrorState(true);
       }
@@ -44,33 +44,33 @@ export default function Select({ data, materials, categories }) {
           name="material"
           id={style.material}
           onChange={selectedMaterialHandler}
-          defaultValue={"DEFAULT"}
+          defaultValue={'DEFAULT'}
         >
           <option value="DEFAULT" disabled>
             -- Материал --
           </option>
           {materials &&
-            materials.map((material) => (
-              <option key={material._id} value={material._id}>
-                {material.name}
-              </option>
-            ))}
+          materials.map((material) => (
+            <option key={material._id} value={material._id}>
+              {material.name}
+            </option>
+          ))}
         </select>
         <select
           name="category"
           id={style.category}
           onChange={selectedCategoryHandler}
-          defaultValue={"DEFAULT"}
+          defaultValue={'DEFAULT'}
         >
           <option value="DEFAULT" disabled>
             -- Категория --
           </option>
           {categories &&
-            categories.map((category) => (
-              <option key={category._id} value={category._id}>
-                {category.name}
-              </option>
-            ))}
+          categories.map((category) => (
+            <option key={category._id} value={category._id}>
+              {category.name}
+            </option>
+          ))}
         </select>
       </div>
       <br />
@@ -78,7 +78,7 @@ export default function Select({ data, materials, categories }) {
         type="button"
         className="btn btn-success"
         onClick={clickHandler}
-        style={{ marginBottom: "10px" }}
+        style={{ marginBottom: '10px' }}
       >
         Добавить
       </button>
